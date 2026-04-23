@@ -1,0 +1,69 @@
+[
+  {
+    "name": "netbox",
+    "description": "The premier source of truth powering network automation. Open source under Apache 2. Try NetBox Cloud free: https://netboxlabs.com/products/free-netbox-cloud/",
+    "tech": [
+      "Python",
+      "HTML",
+      "TypeScript",
+      "REST",
+      "AI",
+      "ML"
+    ],
+    "link": "https://netboxlabs.com/products/netbox/",
+    "github": "https://github.com/netbox-community/netbox",
+    "youtube": "https://www.youtube.com/watch?v=hAfCbB-4cyk",
+    "image": "https://raw.githubusercontent.com/netbox-community/netbox/main/docs/netbox_logo_light.svg",
+    "stars": 20317,
+    "forks": 2989
+  },
+  {
+    "name": "awesome-system-design-resources",
+    "description": "Learn System Design concepts and prepare for interviews using free resources.",
+    "tech": [
+      "Java",
+      "Python",
+      "HTML",
+      "GraphQL",
+      "REST",
+      "WebSocket"
+    ],
+    "link": "https://algomaster.io",
+    "github": "https://github.com/ashishps1/awesome-system-design-resources",
+    "image": "https://raw.githubusercontent.com/ashishps1/awesome-system-design-resources/main/diagrams/system-design-github.png",
+    "stars": 36684,
+    "forks": 7933
+  },
+  {
+    "name": "litellm",
+    "description": "Python SDK, Proxy Server (AI Gateway) to call 100+ LLM APIs in OpenAI (or native) format, with cost tracking, guardrails, loadbalancing and logging. [Bedrock, Azure, OpenAI, VertexAI, Cohere, Anthropic, Sagemaker, HuggingFace, VLLM, NVIDIA NIM]",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "HTML",
+      "Rails",
+      "REST",
+      "Prisma"
+    ],
+    "link": "https://docs.litellm.ai/docs/",
+    "github": "https://github.com/BerriAI/litellm",
+    "stars": 44453,
+    "forks": 7509
+  },
+  {
+    "name": "MediumX",
+    "description": "MediumX is a full-stack blogging platform built with FastAPI, PostgreSQL, and JavaScript. It features JWT-based auth, article management, and is fully containerized with Docker and CI/CD using GitHub Actions. ",
+    "tech": [
+      "Python",
+      "Terraform",
+      "JavaScript",
+      "FastAPI",
+      "HTML",
+      "CSS"
+    ],
+    "github": "https://github.com/Faizolam/MediumX",
+    "image": "/faiz.png",
+    "stars": 0,
+    "forks": 0
+  }
+]

@@ -29,21 +29,11 @@ const GITHUB_REPOS = [
   "https://github.com/Faizolam/MediumX.git",
 ];
 
-// GitHub token for higher API rate limits (optional but recommended)
-// Create a token at: https://github.com/settings/tokens
-// No scope needed for public repos
-// NOTE: Do NOT use NEXT_PUBLIC_ prefix - that exposes the token to the browser!
-// This must be used in server components or API routes only
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+// Import cached GitHub data from JSON file
+import githubProjectsData from "../data/github-projects.json";
 
-// Helper to get headers with optional auth
-function getHeaders() {
-  const headers: Record<string, string> = { Accept: "application/vnd.github.v3+json" };
-  if (GITHUB_TOKEN) {
-    headers.Authorization = `token ${GITHUB_TOKEN}`;
-  }
-  return headers;
-}
+// Use cached data - no API calls needed at runtime
+const cachedGitHubProjects: Project[] = githubProjectsData;
 
 // Add image URLs for each repo above (in same order)
 // Leave empty string "" to auto-fetch from README, or provide direct raw URL, or local path like ./public/image.png
@@ -125,6 +115,7 @@ const manualProjects: Project[] = [
     link: "https://algomaster.io/flipt-deploy",
     github: "https://github.com/ashishps1/awesome-system-design-resources.git",
     image: "https://raw.githubusercontent.com/ashishps1/awesome-system-design-resources/main/diagrams/system-design-github.png",
+    youtube: "https://www.youtube.com/watch?v=OeR2OiUA0gA",
   },
 ];
 
@@ -566,25 +557,9 @@ export function ProjectGrids() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    async function fetchRepos() {
-      if (GITHUB_REPOS.length === 0) {
-        setIsLoading(false);
-        return;
-      }
-
-      try {
-        const fetchedProjects = await Promise.all(
-          GITHUB_REPOS.map((url, index) => fetchGitHubProject(url, IMAGE_URLS[index] || "", YOUTUBE_URLS[index] || ""))
-        );
-        setProjects([...fetchedProjects, ...manualProjects]);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "Failed to fetch projects");
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
-    fetchRepos();
+    // Use cached GitHub data from JSON file - no API calls needed
+    setProjects([...cachedGitHubProjects, ...manualProjects]);
+    setIsLoading(false);
   }, []);
 
   const visibleProjects = showAll ? projects : projects.slice(0, INITIAL_COUNT);
