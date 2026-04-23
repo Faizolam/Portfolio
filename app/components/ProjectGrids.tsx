@@ -20,6 +20,7 @@ interface Project {
 
 // Add your GitHub repo URLs here - data will be auto-fetched
 const GITHUB_REPOS = [
+  "https://github.com/netbox-community/netbox.git",
   "https://github.com/ashishps1/awesome-system-design-resources",
   // "https://github.com/ashishps1/awesome-low-level-design",
   // "https://github.com/ashishps1/awesome-engineering-articles.git",
@@ -28,9 +29,26 @@ const GITHUB_REPOS = [
   "https://github.com/Faizolam/MediumX.git",
 ];
 
+// GitHub token for higher API rate limits (optional but recommended)
+// Create a token at: https://github.com/settings/tokens
+// No scope needed for public repos
+// NOTE: Do NOT use NEXT_PUBLIC_ prefix - that exposes the token to the browser!
+// This must be used in server components or API routes only
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+
+// Helper to get headers with optional auth
+function getHeaders() {
+  const headers: Record<string, string> = { Accept: "application/vnd.github.v3+json" };
+  if (GITHUB_TOKEN) {
+    headers.Authorization = `token ${GITHUB_TOKEN}`;
+  }
+  return headers;
+}
+
 // Add image URLs for each repo above (in same order)
 // Leave empty string "" to auto-fetch from README, or provide direct raw URL, or local path like ./public/image.png
 const IMAGE_URLS = [
+  "https://raw.githubusercontent.com/netbox-community/netbox/main/docs/netbox_logo_light.svg",
   "https://raw.githubusercontent.com/ashishps1/awesome-system-design-resources/main/diagrams/system-design-github.png",
   // "https://raw.githubusercontent.com/ashishps1/awesome-low-level-design/main/images/lld-repo-logo.png",
   // "https://raw.githubusercontent.com/ashishps1/awesome-engineering-articles/main/eng-blogs.jpg",
@@ -271,7 +289,7 @@ const DEPENDENCY_FILES = [
 async function fetchFileContent(apiBase: string, filePath: string): Promise<string | null> {
   try {
     const response = await fetch(`${apiBase}/contents/${filePath}`, {
-      headers: { Accept: "application/vnd.github.v3+json" },
+      headers: getHeaders(),
     });
     if (response.ok) {
       const data = await response.json();
@@ -341,7 +359,7 @@ async function fetchGitHubProject(githubUrl: string, imageUrl: string = "", yout
   const apiBase = `https://api.github.com/repos/${owner}/${repo}`;
 
   const repoResponse = await fetch(apiBase, {
-    headers: { Accept: "application/vnd.github.v3+json" },
+    headers: getHeaders(),
   });
 
   if (!repoResponse.ok) {
@@ -354,7 +372,7 @@ async function fetchGitHubProject(githubUrl: string, imageUrl: string = "", yout
   // Get all languages from the repo
   try {
     const languagesResponse = await fetch(`${apiBase}/languages`, {
-      headers: { Accept: "application/vnd.github.v3+json" },
+      headers: getHeaders(),
     });
     if (languagesResponse.ok) {
       const languagesData = await languagesResponse.json();
@@ -391,7 +409,7 @@ async function fetchGitHubProject(githubUrl: string, imageUrl: string = "", yout
   if (techStack.length < 6) {
     try {
       const readmeResponse = await fetch(`${apiBase}/readme`, {
-        headers: { Accept: "application/vnd.github.v3+json" },
+        headers: getHeaders(),
       });
       if (readmeResponse.ok) {
         const readmeData = await readmeResponse.json();
@@ -418,7 +436,7 @@ async function fetchGitHubProject(githubUrl: string, imageUrl: string = "", yout
   if (!finalImageUrl) {
     try {
       const readmeResponse = await fetch(`${apiBase}/readme`, {
-        headers: { Accept: "application/vnd.github.v3+json" },
+        headers: getHeaders(),
       });
       if (readmeResponse.ok) {
         const readmeData = await readmeResponse.json();

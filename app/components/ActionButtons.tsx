@@ -1,6 +1,6 @@
 "use client";
 
-import { Github, ExternalLink, Play, X } from "lucide-react";
+import { Github, ExternalLink, Play, X, GitPullRequest } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
@@ -18,6 +18,12 @@ export function ActionButtons({ github, link, youtube, projectName }: ActionButt
 
   if (!hasAnyAction) return null;
 
+  // Generate commits URL from repo URL - remove .git suffix if present
+  // Only for valid GitHub URLs (not "#" or other links)
+  const isValidGithubUrl = github && github.startsWith("https://github.com/") && !github.startsWith("#");
+  const cleanGithubUrl = isValidGithubUrl ? github.replace(/\.git$/, "") : null;
+  const commitsUrl = cleanGithubUrl ? `${cleanGithubUrl}/commits?author=Faizolam` : undefined;
+
   return (
     <>
       <div className="flex gap-2">
@@ -29,6 +35,17 @@ export function ActionButtons({ github, link, youtube, projectName }: ActionButt
           >
             <Play size={12} fill="currentColor" />
           </button>
+        )}
+        {commitsUrl && (
+          <a
+            href={commitsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex h-7 w-7 items-center justify-center rounded-full bg-green-500/10 text-green-500 transition-all hover:bg-green-500 hover:text-white"
+            title="View my commits"
+          >
+            <GitPullRequest size={14} />
+          </a>
         )}
         {github && (
           <a
