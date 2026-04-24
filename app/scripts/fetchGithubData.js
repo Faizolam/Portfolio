@@ -1,6 +1,7 @@
 // Script to fetch GitHub repo data with full tech detection
 // Run: node app/scripts/fetchGithubData.js
-
+require("dotenv").config();
+const { data } = require("framer-motion/client");
 const fs = require("fs");
 const { get } = require("http");
 const { url } = require("inspector");
@@ -9,6 +10,7 @@ const { escape } = require("querystring");
 
 // GitHub repos to fetch
 const GITHUB_REPOS = [
+  "https://github.com/polarsource/polar.git",
   "https://github.com/netbox-community/netbox.git",
   "https://github.com/ashishps1/awesome-system-design-resources",
   "https://github.com/BerriAI/litellm",
@@ -18,6 +20,7 @@ const GITHUB_REPOS = [
 // Image URLs (in same order as GITHUB_REPOS)
 // Use "/image.png" for local files in public folder
 const IMAGE_URLS = [
+  "/Polar.png",
   "https://raw.githubusercontent.com/netbox-community/netbox/main/docs/netbox_logo_light.svg",
   "https://raw.githubusercontent.com/ashishps1/awesome-system-design-resources/main/diagrams/system-design-github.png",
   "",
@@ -30,12 +33,75 @@ const YOUTUBE_URLS = ["https://www.youtube.com/watch?v=hAfCbB-4cyk", "", "", ""]
 // GitHub token (from environment)
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN || process.env.NEXT_PUBLIC_GITHUB_TOKEN;
 
-function getHeaders() {
-  const headers = { Accept: "application/vnd.github.v3+json" };
-  if (GITHUB_TOKEN) {
-    headers.Authorization = `token ${GITHUB_TOKEN}`;
+const CALLS_PER_REPO = 10
+// requiredCalls = repos * CALLS_PER_REPO
+
+async function getRateLimit(headers={}) {
+  const res = await fetch("https://api.github.com/rate_limit", { headers });
+
+  if (!res.ok){
+    throw new Error("Failed to fetch GitHub rate limit");
   }
-  return headers;
+
+  const data = await res.json();
+  return data.resources.core;
+}
+
+async function chooseGitHubAuth(repoCount) {
+  // calculate required API calls
+  const requiredCalls = repoCount * CALLS_PER_REPO
+
+  console.log(`\n🔎 Checking GitHub rate limits...`);
+  console.log(`Need approx ${requiredCalls} API calls\n`);
+
+  // 1️⃣ Check public rate limit
+  const publicLimit = await getRateLimit();
+  if (publicLimit.remaining >= requiredCalls){
+    console.log("✅ Using PUBLIC GitHub API\n");
+    return null; //no token needed
+  }
+  console.log("TOKEN EXISTS?", !!process.env.GITHUB_TOKEN);
+  // 2️⃣ If token exists, check PAT rate limit
+  if (GITHUB_TOKEN){
+    const patLimit = await getRateLimit({Authorization: `token ${GITHUB_TOKEN}`});
+
+     console.log(
+      `PAT remaining: ${patLimit.remaining}/${patLimit.limit}`
+    );
+
+    if (patLimit.remaining >= requiredCalls){
+      console.log("🔐 Switching to PAT authentication\n");
+      return GITHUB_TOKEN;
+    }
+  }
+
+  // 3️⃣ Not enough calls available
+  const resetData = new Date(publicLimit.reset * 1000).toLocaleTimeString();
+
+  throw new Error(
+    `Not enough GitHub API calls remaining.
+    Need ${requiredCalls} calls.
+    Public remaining: ${publicLimit.remaining} 
+    Reset at: ${resetData} 
+    Try again later.`
+  )
+}
+
+// Return token ONCE
+let ACTIVE_TOKEN = null;
+async function initGitHubAuth() {
+  ACTIVE_TOKEN = await chooseGitHubAuth(GITHUB_REPOS.length);
+  console.log("Auth initialized.\n");
+}
+
+function getHeaders() {
+  if (ACTIVE_TOKEN) {
+    return{
+      Authorization: `token ${GITHUB_TOKEN}`,
+      Accept: "application/vnd.github.v3+json"
+    }
+  }
+  return { Accept: "application/vnd.github.v3+json" };
 }
 
 function parseGitHubUrl(url) {
@@ -113,39 +179,25 @@ const DEPENDENCY_FILES = [
   "go.mod", "go.sum", "Gemfile", "Gemfile.lock",
 ];
 
+
 // Fetch a single file content
 async function fetchFileContent(apiBase, filePath) {
     const fullUrl = `${apiBase}/contents/${filePath}`;
     // 1. Initial attempt: No token (Public API)
-    console.log("Fetching without token...");
+    // console.log("Fetching without token...");
   try {
     const response = await fetch(fullUrl, {
-    //   headers: getHeaders(),
-        headers: {Accept: "application/vnd.github.v3.raw"}
+      headers: getHeaders(),
     });
-    // 2. Check if we need to fall back to PAT
-    if (!response.ok && GITHUB_TOKEN) {
-        // 403 usually means rate limit; 404 is used by GitHub for private repos if you aren't authenticated
-        const isRatelimited = response.status === 403;
-        const isPrivateOrMissing = response.status === 404;
-
-        if (isRatelimited || isPrivateOrMissing){
-            console.log(`Switching to PAT: ${isRatelimited ? 'Rate limit hit' : 'Repo private/missing'}`);
-
-            response = await fetch(fullUrl, {
-                headers: getHeaders(),
-            });
-        }
+  
+    if (response.ok) {
+      const data = await response.json();
+      // GitHub returns content encoded in Base64
+      // We use decodeURIComponent(escape()) to handle emojis or special characters/UTF-8 safely
+      return decodeURIComponent(escape(atob(data.content)));
+        
     }
-    // 3. Handle final result
-    if (!response.ok){
-        throw new Error(`Github API Error: ${response.status} ${response.statusText}`)
-    }
-    
-    const data = await response.json();
-    // GitHub returns content encoded in Base64
-    // We use decodeURIComponent(escape()) to handle emojis or special characters/UTF-8 safely
-    return decodeURIComponent(escape(atob(data.content)));
+   
 
   } catch (e) { 
     console.error("Fetch failed:", e)
@@ -231,33 +283,21 @@ async function fetchRepo(githubUrl, imageUrl = "", youtubeUrl = "") {
     // 1. Get languages from the repo
     try {
       const langResponse = await fetch(`${apiBase}/languages`, { 
-        // headers: getHeaders() 
-        headers: {Accept : "application/vnd.github.v3+json"} 
-        
+        headers: getHeaders()         
       });
-      if (!langResponse.ok && GITHUB_TOKEN) {
-        const isRatelimited = langResponse.status === 403;
-        const isPrivateOrMissing = langResponse.status === 404;
-        
-        if (isRatelimited || isPrivateOrMissing){
-            console.log(`Switching to PAT: ${isRatelimited ? 'Rate limit hit' : 'Repo private/missing'}`);
-
-            langResponse = await fetch(`${apiBase}/languages`,{ headers:getHeaders()}); 
+      if (langResponse.ok) {
+        const languages = await langResponse.json();
+        const sorted = Object.entries(languages)
+          .sort(([, a], [, b]) => b - a)
+          .slice(0, 3);
+        for (const [lang] of sorted) {
+          if (LANGUAGE_MAP[lang]) {
+            techStack.push(LANGUAGE_MAP[lang]);
+          }
         }
-    }
-    if (!langResponse.ok){
-        throw new Error(`Github API Error: ${langResponse.status} ${langResponse.statusText}`);
+        
     }
     
-    const languages = await langResponse.json();
-    const sorted = Object.entries(languages)
-      .sort(([, a], [, b]) => b - a)
-      .slice(0, 3);
-    for (const [lang] of sorted) {
-      if (LANGUAGE_MAP[lang]) {
-        techStack.push(LANGUAGE_MAP[lang]);
-      }
-    }
     } catch (e) { console.log("Language fetch failed:", e);
         return null;
      }
@@ -321,8 +361,12 @@ async function fetchRepo(githubUrl, imageUrl = "", youtubeUrl = "") {
   }
 }
 
+const sleep = ms => new Promise(r => setTimeout(r, ms));
 async function main() {
   console.log("🚀 Starting GitHub data fetch with tech detection...\n");
+
+  await initGitHubAuth();
+  console.log(ACTIVE_TOKEN ? "🔐 Using PAT" : "🌍 Using Public API");
 
   const projects = [];
 
@@ -334,6 +378,7 @@ async function main() {
     );
     if (project) {
       projects.push(project);
+      await sleep(300);
     }
   }
 
