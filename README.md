@@ -2,7 +2,7 @@
 
 A modern, interactive personal portfolio built with Next.js 16, React 19, and Tailwind CSS 4. Features include GitHub project integration, neural network visualization, Pomodoro timer, and more.
 
-![Portfolio Preview](https://via.placeholder.com/1200x600.png?text=Portfolio+Preview)
+<!-- ![Portfolio Preview](https://via.placeholder.com/1200x600.png?text=Portfolio+Preview) -->
 
 ## ✨ Features
 

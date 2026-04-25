@@ -45,6 +45,7 @@ const categories = [
         skills: [
             { name: "Docker", slug: "docker" },
             { name: "Google Cloud", slug: "googlecloud" },
+            { name: "Terraform", slug: "terraform" },
             // { name: "AWS", slug: "amazonwebservices" },
             { name: "Vercel", slug: "vercel" },
             { name: "Git", slug: "git" },

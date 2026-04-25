@@ -14,8 +14,8 @@
     "github": "https://github.com/polarsource/polar",
     "youtube": "https://www.youtube.com/watch?v=hAfCbB-4cyk",
     "image": "/Polar.png",
-    "stars": 9758,
-    "forks": 704
+    "stars": 9759,
+    "forks": 705
   },
   {
     "name": "netbox",
@@ -31,8 +31,8 @@
     "link": "https://netboxlabs.com/products/netbox/",
     "github": "https://github.com/netbox-community/netbox",
     "image": "https://raw.githubusercontent.com/netbox-community/netbox/main/docs/netbox_logo_light.svg",
-    "stars": 20328,
-    "forks": 2988
+    "stars": 20332,
+    "forks": 2989
   },
   {
     "name": "awesome-system-design-resources",
@@ -48,8 +48,8 @@
     "link": "https://algomaster.io",
     "github": "https://github.com/ashishps1/awesome-system-design-resources",
     "image": "https://raw.githubusercontent.com/ashishps1/awesome-system-design-resources/main/diagrams/system-design-github.png",
-    "stars": 36708,
-    "forks": 7940
+    "stars": 36716,
+    "forks": 7942
   },
   {
     "name": "litellm",
@@ -64,8 +64,8 @@
     ],
     "link": "https://docs.litellm.ai/docs/",
     "github": "https://github.com/BerriAI/litellm",
-    "stars": 44599,
-    "forks": 7535
+    "stars": 44644,
+    "forks": 7547
   },
   {
     "name": "MediumX",
@@ -79,7 +79,7 @@
       "Pydantic"
     ],
     "github": "https://github.com/Faizolam/MediumX",
-    "image": "/faiz.png",
+
     "stars": 0,
     "forks": 0
   }

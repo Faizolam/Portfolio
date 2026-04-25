@@ -34,7 +34,7 @@ export function ExperienceItem({ title, role, children, collapsible = false, lin
                 <span className="text-sm text-gray-400 dark:text-gray-500">{role}</span>
             </div>
 
-            <div className={`relative max-w-xl text-sm leading-relaxed text-gray-500 dark:text-gray-400 transition-all duration-300 ${!isExpanded && collapsible ? `${collapsedHeight} overflow-hidden` : ""}`}>
+            <div className={`relative max-w-3xl text-sm leading-relaxed text-gray-500 dark:text-gray-400 transition-all duration-300 ${!isExpanded && collapsible ? `${collapsedHeight} overflow-hidden` : ""}`}>
                 {children}
                 {collapsible && !isExpanded && (
                     <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-white dark:from-black to-transparent" />
