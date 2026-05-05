@@ -8,8 +8,8 @@ const categories = [
     {
         name: "Languages",
         skills: [
-            { name: "Go", slug: "go" },
             { name: "Python", slug: "python" },
+            { name: "Go", slug: "go" },
             // { name: "TypeScript", slug: "typescript" },
             // { name: "JavaScript", slug: "javascript" },
             // { name: "C++", slug: "cplusplus" },

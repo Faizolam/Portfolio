@@ -429,7 +429,7 @@ export default function Home() {
               <h2 className="mb-6 text-xs font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500">
                 Tech Stack
               </h2>
-              <p className="mb-8 text-lg text-gray-600 dark:text-gray-400">
+              <p className="mb-8 text-base text-gray-600 dark:text-gray-400">
                 I&apos;m a generalist at heart who can build with anything, but here&apos;s the core stack I&apos;ve spent the most time with:
               </p>
               <TechStack />
@@ -513,7 +513,7 @@ export default function Home() {
               <h2 className="mb-6 text-xs font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500">
                 Writings & Blogs
               </h2>
-              <p className="w-full text-lg leading-relaxed text-gray-600 dark:text-gray-400">
+              <p className="w-full text-base leading-relaxed text-gray-600 dark:text-gray-400">
                 I host my thoughts on{" "}
                 <a
                   href="https://medium.com/@FaizOlam"
@@ -540,12 +540,10 @@ export default function Home() {
                 </h3>
                 <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
                   {[
-                    { title: "Linux Kernel Development", author: "Robert Love" },
-                    { title: "Hacking: The Art of Exploitation", author: "Jon Erickson" },
-                    { title: "Linux in a Nutshell", author: "Ellen Siever, Stephen Figgins, Robert Love, and Arnold Robbins" },
-                    { title: "Linux Kernel in a Nutshell", author: "Greg Kroah-Hartman" },
-                    { title: "The Art of Electronics", author: "Paul Horowitz and Winfield Hill" },
-                    { title: "Nmap Cookbook", author: "Nicholas Marsh" }
+                    { title: "SQLAlchemy 2 In Practice", author: "Miguel Grinberg" },
+                    { title: "Docker Deep Dive: Zero to Docker in a single book", author: "Nigel Poulton" },
+                    { title: "Robust Python: Write Clean and Maintainable Code", author: "Patrick Viafore" },
+                    { title: "SQL Cookbook: Query Solutions and Techniques for All SQL Users", author: "Anthony Molinaro and Robert de Graaf" }
                   ].map((book) => (
                     <div key={book.title} className="group flex flex-col gap-1 transition-all">
                       <span className="text-sm font-medium text-black dark:text-white group-hover:underline underline-offset-4 decoration-gray-200 dark:decoration-gray-800 transition-all">
@@ -560,7 +558,7 @@ export default function Home() {
               </div>
 
               {/* Casual Reads Subsection */}
-              <div className="mb-4">
+              {/* <div className="mb-4">
                 <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-600">
                   Casual Reads
                 </h3>
@@ -583,7 +581,7 @@ export default function Home() {
                     </div>
                   ))}
                 </div>
-              </div>
+              </div> */}
 
               {/* Note */}
               <p className="mt-6 text-xs italic text-gray-400 dark:text-gray-500">
@@ -624,7 +622,7 @@ export default function Home() {
                 Get in Touch
               </h2>
               <div className="space-y-4">
-                <p className="text-lg text-gray-600 dark:text-gray-400">
+                <p className="text-base text-gray-600 dark:text-gray-400">
                   Connect with me on{" "}
                   <a
                     href="https://www.linkedin.com/in/faizaalam/"
