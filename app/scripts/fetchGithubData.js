@@ -1,18 +1,13 @@
 // Script to fetch GitHub repo data with full tech detection
 // Run: node app/scripts/fetchGithubData.js
 require("dotenv").config();
-const { data } = require("framer-motion/client");
 const fs = require("fs");
-const { get } = require("http");
-const { url } = require("inspector");
 const path = require("path");
-const { escape } = require("querystring");
 
 // GitHub repos to fetch
 const GITHUB_REPOS = [
   "https://github.com/polarsource/polar.git",
   "https://github.com/netbox-community/netbox.git",
-  "https://github.com/ashishps1/awesome-system-design-resources",
   "https://github.com/BerriAI/litellm",
   "https://github.com/Faizolam/MediumX.git",
 ];
@@ -20,15 +15,14 @@ const GITHUB_REPOS = [
 // Image URLs (in same order as GITHUB_REPOS)
 // Use "/image.png" for local files in public folder
 const IMAGE_URLS = [
-  "/Polar.png",
+  "./polar.png",
   "https://raw.githubusercontent.com/netbox-community/netbox/main/docs/netbox_logo_light.svg",
-  "https://raw.githubusercontent.com/ashishps1/awesome-system-design-resources/main/diagrams/system-design-github.png",
   "",
-  "/faiz.png",
+  "",
 ];
 
 // YouTube URLs (optional)
-const YOUTUBE_URLS = ["https://www.youtube.com/watch?v=hAfCbB-4cyk", "", "", ""];
+const YOUTUBE_URLS = ["https://www.youtube.com/watch?v=OeR2OiUA0gA", "", "", ""];
 
 // GitHub token (from environment)
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN || process.env.NEXT_PUBLIC_GITHUB_TOKEN;
@@ -193,8 +187,8 @@ async function fetchFileContent(apiBase, filePath) {
     if (response.ok) {
       const data = await response.json();
       // GitHub returns content encoded in Base64
-      // We use decodeURIComponent(escape()) to handle emojis or special characters/UTF-8 safely
-      return decodeURIComponent(escape(atob(data.content)));
+      // Decode from base64 to UTF-8
+      return Buffer.from(data.content, 'base64').toString('utf-8');
         
     }
    
@@ -325,7 +319,7 @@ async function fetchRepo(githubUrl, imageUrl = "", youtubeUrl = "") {
         const readmeResponse = await fetch(`${apiBase}/readme`, { headers: getHeaders() });
         if (readmeResponse.ok) {
           const readmeData = await readmeResponse.json();
-          const readmeContent = atob(readmeData.content);
+        const readmeContent = Buffer.from(readmeData.content, 'base64').toString('utf-8');
           const detectedTech = detectTechFromReadme(readmeContent, techStack);
           for (const t of detectedTech) {
             if (!techStack.includes(t)) {

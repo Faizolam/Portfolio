@@ -279,12 +279,13 @@ export default function Home() {
               </button>
             </div>
 
-            <div className="w-full space-y-4 text-left text-base leading-relaxed text-gray-600 dark:text-gray-400 sm:text-lg md:text-xl">
+            <div className="w-full space-y-4 text-left text-base leading-relaxed text-gray-600 dark:text-gray-400 sm:text-base md:text-base">
               <p>
-                a full-stack developer and <a href="https://en.wikipedia.org/wiki/Product_design" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-black dark:hover:text-white transition-colors">product builder</a> with deep experience across engineering, product strategy, and user-centric design.
+                Hello World! I’m a Software Engineer with 4+ years of experience building scalable software solutions, specializing in backend development with Python and a strong grasp of SQL. I design and implement APIs, data models, and system architecture that power real-world products.
               </p>
+              <p>I have hands-on experience with cloud infrastructure on GCP and AWS, use Terraform for Infrastructure as Code, and build concurrent, AI-powered systems using async programming, integrating AI features into production applications.</p>
               <p>
-                a <a href="https://en.wikipedia.org/wiki/Polymath" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-black dark:hover:text-white transition-colors">polymath</a> who bridges technical architecture with business outcomes to create impactful, scalable solutions.
+                I’m focused on building cloud-native systems, exploring AI and LLM-based solutions, contributing to open source, and working as a <a href="https://en.wikipedia.org/wiki/Polymath" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-black dark:hover:text-white transition-colors">polymath</a> who bridges technical architecture with business outcomes to create impactful, scalable solutions.
               </p>
             </div>
 
@@ -297,59 +298,33 @@ export default function Home() {
               </h2>
               <div className="space-y-12">
                 <ExperienceItem
-                  title="Entrepreneur First"
-                  role="Founder in Residence, Bengaluru"
+                  title="Aiinhome Technologies Pvt. Ltd."
+                  role="Software Engineer, (Remote) Kolkata, India"
                   collapsible={true}
-                  link="https://www.joinef.com/"
+                  link="https://aiinhome.com/"
                 >
                   <div className="space-y-2">
-                    <p>As a Founder in Residence at Entrepreneurs First (EF), a premier global talent investor and startup accelerator known for backing exceptional individuals to build transformative companies from scratch, I am fully immersed in designing and developing cutting-edge Agentic AI systems.</p>
-                    <p>Actively building autonomous, goal-driven AI agents that shift from suggestion-based tools to proactive execution, enabling seamless human-AI collaboration and redefining task automation, decision-making, and operations.</p>
-                    <p>Driving a bold vision for the future of computing: making traditional web browsing obsolete, turning personal data into the primary interface (your "homepage"), and empowering agentic systems to independently handle complex responsibilities.</p>
-                    <p>Hustling full-time in a high-intensity, ambition-fueled environment surrounded by world-class cofounders, mentors, and resources - leveraging EF's structured support (including coaching, community, and potential funding pathways) to explore, validate, and iterate ideas at pace.</p>
-                    <p>Positioning myself at the forefront of a paradigm shift in AI, tackling hard technical and conceptual challenges to create meaningful, scalable impact in the emerging agentic era.</p>
-                    <p>This role highlights my entrepreneurial drive, deep technical expertise in AI systems, and commitment to pioneering the next wave of intelligent, autonomous technology.</p>
+                    <p>At Aiinhome, worked as a backend-focused software engineer building data-driven web applications and APIs for real-world business products across SCM, e-commerce, and enterprise domains.</p>
+                    <p>{"\u2022"} Designed and optimized complex SQL queries, stored procedures, and data models to support high-volume business workflows.</p>
+                    <p> {"\u2022"} Developed backend services for supply chain management and e-commerce systems, improving operational efficiency and automation.</p>
+                    <p> {"\u2022"} Built RESTful APIs and backend logic using Python-based frameworks for internal and client-facing applications.</p>
+                    <p> {"\u2022"} Designed and implemented an AI agent for supply chain management to automate workflows and enhance decision-making.</p>
+                    <p> {"\u2022"} Worked directly with clients to gather requirements, translate business needs into technical solutions, and deliver production-ready features.</p>
+                    <p> {"\u2022"} Contributed to enterprise projects, including work with CESC, focusing on data pipelines, backend services, and system integrations.</p>
                   </div>
                 </ExperienceItem>
 
                 <ExperienceItem
-                  title="Google Summer of Code 2025"
-                  role="Emory University School of Medicine, Atlanta, USA"
-                  collapsible={true}
-                  link="https://minimalistbook.com/gsoc-final-report-2025/"
-                >
-                  <div className="space-y-2">
-                    <p>Designed and developed a comprehensive system for managing Access Control List (ACL) permissions across multiple Linux file system servers, including NFS and BeeGFS, demonstrating expertise in large-scale distributed systems and secure file management.</p>
-                    <p>Built a robust backend capable of processing millions of permission change requests, showcasing proficiency in high-performance computing and scalability.</p>
-                    <p>Implemented two Linux systemd daemons communicating via Unix sockets: one for gRPC-based backend interactions and another for executing ACL changes, highlighting skills in daemon development, inter-process communication, and system-level programming.</p>
-                    <p>Created a user-friendly Next.js frontend enabling secure login, backend communication, and scheduling of permission requests, illustrating full-stack development capabilities and focus on intuitive user experiences.</p>
-                  </div>
-                </ExperienceItem>
-
-                <ExperienceItem
-                  title="Professional Freelancer (Technical GTM)"
-                  role="Technical Writer, Tel Aviv, Israel"
-                  collapsible={true}
-                  link="https://www.upwork.com/freelancers/~0172a072394ece49bb?viewMode=1"
-                >
-                  <div className="space-y-2">
-                    <p>Authored comprehensive, highly technical documentation (50+ pages) for a Software Composition Analysis (SCA) tool, including detailed guides on advanced features such as reachability analysis - focusing on identifying truly exploitable vulnerabilities in open-source dependencies to reduce noise and prioritize remediation in secure software development lifecycles.</p>
-                    <p>Ghostwrote in-depth content on Reachability Analysis for the CTO of a security company, explaining how it enhances SCA by determining whether detected vulnerabilities are actually reachable and exploitable in the application's codebase - delivering clear, authoritative thought leadership material suitable for blogs, whitepapers, or technical marketing.</p>
-                    <p>Deployed and configured Flipt (an open-source, Git-native feature flagging platform) on cloud infrastructure to support video production workflows for a feature flagging provider; troubleshot and resolved operational issues to ensure reliable, production-ready performance in a dynamic environment.</p>
-                    <p>Developed custom scraping tools for a proxy provider targeting real estate platforms, enabling efficient data extraction while adhering to technical and ethical constraints; rapidly produced high-quality articles and technical write-ups on the tools, scraping methodologies, and platform integrations to support knowledge sharing and client deliverables.</p>
-                  </div>
-                </ExperienceItem>
-
-                <ExperienceItem
-                  title="Engineering Intern"
-                  role="Athena Consulting Ltd. Dubai"
+                  title="Campus Assembly"
+                  role="Software Engineer, (Remote) Kolkata, India"
                   collapsible={true}
                 >
                   <div className="space-y-2">
-                    <p>Led the complete system design and deployment architecture for Eumlet, a UAE-based B2B Web3 payments and financial platform (built on Next.js), on AWS infrastructure. Configured Debian EC2 instances, Application Load Balancer (ALB), and NGINX reverse proxy under senior guidance - ensuring high availability, scalability, and secure handling of financial transactions in a regulated environment.</p>
-                    <p>Engineered automated CI/CD pipelines using GitHub Actions for seamless build, test, and deployment workflows, with direct integration and manual orchestration to EC2 targets - demonstrating strong expertise in modern DevOps practices, infrastructure as code principles, and zero-downtime deployments for production fintech applications.</p>
-                    <p>Managed a team of 4 developers while simultaneously supporting two high-value clients: Lunarspace and Concordium (a privacy-focused Layer-1 blockchain platform) - balancing tight deadlines, client expectations, and resource constraints in a fast-paced environment. Authored comprehensive legal and technical developer handbooks to standardize onboarding, compliance, and best practices for new recruits.</p>
-                    <p>Collaborated remotely with BGTrade (China-based financial platform team) on global security audits and production deployments of sensitive financial systems - coordinating across time zones and cultures to identify vulnerabilities, implement hardening measures, and ensure secure, compliant rollouts in cross-border fintech ecosystems.</p>
+                    <p>Contributed to the development of an education management platform used by schools, universities, and coaching institutes.</p>
+                    <p> {"\u2022"} Built backend features supporting student profiles, teacher coordination, announcements, and fee management systems.</p>
+                    <p> {"\u2022"} Developed APIs and backend services for managing academic records, communication workflows, and automated fee processes.</p>
+                    <p> {"\u2022"} Worked on database design, performance optimization, and scalable backend architecture.</p>
+                    <p> {"\u2022"} Collaborated with cross-functional teams to deliver reliable and user-focused product features.</p>
                   </div>
                 </ExperienceItem>
               </div>
@@ -368,19 +343,15 @@ export default function Home() {
                   collapsible={true}
                 >
                   <div className="space-y-4">
-                    <p>I've been building and experimenting on the product side for a long time. Each previous product always feels naive in hindsight, but looking back, I can see they were incrementally better, each iteration teaching me something new about users, infrastructure, and what it takes to build something people actually want.</p>
+                    <p>I’ve always learned best by building. Every project I worked on pushed me a little further than the previous one, gradually shaping how I think about real-world software, scalability, and solving business problems.</p>
 
-                    <p>It started with <span className="font-medium">MetaWiper</span> during my sophomore year, a tool that cleaned image metadata. No one would use it, but I was proud. It was my first real attempt at shipping something complete.</p>
+                    <p>My journey began with backend and data-heavy applications in a startup environment, where I worked on supply chain systems, e-commerce platforms, and enterprise solutions. This was where I truly learned how production systems behave — writing complex SQL queries, building APIs, working with clients, and delivering features that businesses actually relied on.</p>
 
-                    <p>Next came <span className="font-medium">Stockic</span>, a news app where I spent months doing serious infrastructure work. This was where I learned to build systems that could scale, not just features that looked good.</p>
+                    <p>As my curiosity grew, I started exploring cloud and DevOps practices. I began learning infrastructure as code, CI/CD, containerization, and serverless architecture. This phase changed how I think about software — not just writing code, but designing systems that are reliable, scalable, and easy to deploy.</p>
 
-                    <p>Then I worked on <span className="font-medium">Gloss Card</span>, and for the first time, a customer actually wanted to buy it for their product. That validation, knowing someone saw enough value to pay, was a turning point.</p>
+                    <p>Eventually, my focus expanded into AI-powered applications. I started building tools that integrate LLMs and automation into real products, experimenting with async programming and concurrent systems to handle real workloads efficiently.</p>
 
-                    <p>After that, I built <span className="font-medium">NeuraLeap</span>, where I had the most meaningful user interactions yet, HRs from established firms. I worked on data pipelines capable of handling 50 million LinkedIn profiles and processing them with AI. The scale was different, the stakes were higher, and the technical challenges forced me to level up.</p>
-
-                    <p>Most recently, I worked on <span className="font-medium">Meteor</span>, an AI SEO toolkit at Entrepreneurs First. This time, my product was being used by 6 YC-backed companies. Real users. Real traction. Real feedback loops.</p>
-
-                    <p className="font-medium text-black">So yes, hard work and consistency pay off. Each product was a step forward, even when it didn't feel like it at the time.</p>
+                    <p>Each step of this journey built on the previous one — from backend foundations to cloud-native systems and now AI-driven products. And I’m still building, still learning, and still excited about what comes next.</p>
                   </div>
                 </ExperienceItem>
               </div>
