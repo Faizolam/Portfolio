@@ -75,22 +75,12 @@ I host my thoughts on [Medium](https://medium.com/@FaizOlam) rather than buildin
 ## Library
 
 ### Dev
-- **Linux Kernel Development** by Robert Love
-- **Hacking: The Art of Exploitation** by Jon Erickson
-- **Linux in a Nutshell** by Ellen Siever, Stephen Figgins, Robert Love, and Arnold Robbins
-- **Linux Kernel in a Nutshell** by Greg Kroah-Hartman
-- **The Art of Electronics** by Paul Horowitz and Winfield Hill
-- **Nmap Cookbook** by Nicholas Marsh
 
-### Casual Reads
-- **Hooked: How to Build Habit-Forming Products** by Nir Eyal
-- **The Lean Startup** by Eric Ries
-- **Zero to One** by Peter Thiel
-- **The Almanack of Naval Ravikant** by Eric Jorgenson
-- **Deep Work** by Cal Newport
-- **The Anthology of Balaji Srinivasan** by Eric Jorgenson
-
-*and many more, these are just one of my best reads
+- **SQLAlchemy 2 In Practice** by Miguel Grinberg
+- **Docker Deep Dive: Zero to Docker in a single book** by Nigel Poulton
+- **Robust Python: Write Clean and Maintainable Code** by Patrick Viafore
+- **SQL Cookbook: Query Solutions and Techniques for All SQL Users** by Anthony Molinaro and Robert de Graaf
+- **LLMOps: Managing Large Language Models in Production** by Abi Aryan
 
 ## Get in Touch
 

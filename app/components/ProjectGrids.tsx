@@ -71,7 +71,10 @@ const INITIAL_COUNT = 6;
  */
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const hasImage = project.image && project.image.trim() !== "";
-  const imageSrc = project.image || "";
+  const rawImage = project.image || "";
+  const imageSrc = rawImage 
+  ? rawImage.replace('./', '/') 
+  : '/fallback-image.png';
   const isLocalImage = hasImage && imageSrc.startsWith("/") ? true : false;
 
   return (

@@ -1,5 +1,53 @@
 [
   {
+    "name": "MediumX",
+    "description": "MediumX is a full-stack blogging platform built with FastAPI, PostgreSQL, and JavaScript. It features JWT-based auth, article management, and is fully containerized with Docker and CI/CD using GitHub Actions. ",
+    "tech": [
+      "Python",
+      "Terraform",
+      "JavaScript",
+      "FastAPI",
+      "PostgreSQL",
+      "Pydantic"
+    ],
+    "github": "https://github.com/Faizolam/MediumX",
+    "stars": 0,
+    "forks": 0
+  },
+  {
+    "name": "storybooksNew",
+    "description": "No description available",
+    "tech": [
+      "JavaScript",
+      "Terraform",
+      "Express",
+      "MongoDB",
+      "Auth0"
+    ],
+    "github": "https://github.com/Faizolam/storybooksNew",
+    "youtube": "https://www.youtube.com/watch?v=OeR2OiUA0gA",
+    "image": "https://raw.githubusercontent.com/Faizolam/storybooksNew/main/storybooksCICD%26DeploymentDiagram.png",
+    "stars": 0,
+    "forks": 0
+  },
+  {
+    "name": "polar",
+    "description": "Turn your software into a business.",
+    "tech": [
+      "Python",
+      "TypeScript",
+      "FastAPI",
+      "Next.js",
+      "CSS",
+      "Tailwind"
+    ],
+    "link": "https://polar.sh",
+    "github": "https://github.com/polarsource/polar",
+    "image": "./polar.png",
+    "stars": 9794,
+    "forks": 708
+  },
+  {
     "name": "netbox",
     "description": "The premier source of truth powering network automation. Open source under Apache 2. Try NetBox Cloud free: https://netboxlabs.com/products/free-netbox-cloud/",
     "tech": [
@@ -12,27 +60,9 @@
     ],
     "link": "https://netboxlabs.com/products/netbox/",
     "github": "https://github.com/netbox-community/netbox",
-    "youtube": "https://www.youtube.com/watch?v=OeR2OiUA0gA",
     "image": "https://raw.githubusercontent.com/netbox-community/netbox/main/docs/netbox_logo_light.svg",
-    "stars": 20418,
-    "forks": 3006
-  },
-  {
-    "name": "awesome-system-design-resources",
-    "description": "Learn System Design concepts and prepare for interviews using free resources.",
-    "tech": [
-      "Java",
-      "Python",
-      "HTML",
-      "GraphQL",
-      "REST",
-      "WebSocket"
-    ],
-    "link": "https://algomaster.io",
-    "github": "https://github.com/ashishps1/awesome-system-design-resources",
-    "image": "https://raw.githubusercontent.com/ashishps1/awesome-system-design-resources/main/diagrams/system-design-github.png",
-    "stars": 36940,
-    "forks": 7976
+    "stars": 20429,
+    "forks": 3008
   },
   {
     "name": "litellm",
@@ -47,23 +77,8 @@
     ],
     "link": "https://docs.litellm.ai/docs/",
     "github": "https://github.com/BerriAI/litellm",
-    "stars": 45692,
-    "forks": 7767
-  },
-  {
-    "name": "MediumX",
-    "description": "MediumX is a full-stack blogging platform built with FastAPI, PostgreSQL, and JavaScript. It features JWT-based auth, article management, and is fully containerized with Docker and CI/CD using GitHub Actions. ",
-    "tech": [
-      "Python",
-      "Terraform",
-      "JavaScript",
-      "FastAPI",
-      "PostgreSQL",
-      "Pydantic"
-    ],
-    "github": "https://github.com/Faizolam/MediumX",
-    "image": "",
-    "stars": 0,
-    "forks": 0
+    "image": "./liteLLM.jpg",
+    "stars": 45818,
+    "forks": 7799
   }
 ]

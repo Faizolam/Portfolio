@@ -6,23 +6,25 @@ const path = require("path");
 
 // GitHub repos to fetch
 const GITHUB_REPOS = [
+  "https://github.com/Faizolam/MediumX.git",
+  "https://github.com/Faizolam/storybooksNew.git",
   "https://github.com/polarsource/polar.git",
   "https://github.com/netbox-community/netbox.git",
   "https://github.com/BerriAI/litellm",
-  "https://github.com/Faizolam/MediumX.git",
 ];
 
 // Image URLs (in same order as GITHUB_REPOS)
 // Use "/image.png" for local files in public folder
 const IMAGE_URLS = [
+  "",
+  "https://raw.githubusercontent.com/Faizolam/storybooksNew/main/storybooksCICD%26DeploymentDiagram.png",
   "./polar.png",
   "https://raw.githubusercontent.com/netbox-community/netbox/main/docs/netbox_logo_light.svg",
-  "",
-  "",
+  "./litellm.jpg",
 ];
 
 // YouTube URLs (optional)
-const YOUTUBE_URLS = ["https://www.youtube.com/watch?v=OeR2OiUA0gA", "", "", ""];
+const YOUTUBE_URLS = ["", "https://www.youtube.com/watch?v=OeR2OiUA0gA", "", "", ""];
 
 // GitHub token (from environment)
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN || process.env.NEXT_PUBLIC_GITHUB_TOKEN;

@@ -543,7 +543,8 @@ export default function Home() {
                     { title: "SQLAlchemy 2 In Practice", author: "Miguel Grinberg" },
                     { title: "Docker Deep Dive: Zero to Docker in a single book", author: "Nigel Poulton" },
                     { title: "Robust Python: Write Clean and Maintainable Code", author: "Patrick Viafore" },
-                    { title: "SQL Cookbook: Query Solutions and Techniques for All SQL Users", author: "Anthony Molinaro and Robert de Graaf" }
+                    { title: "SQL Cookbook: Query Solutions and Techniques for All SQL Users", author: "Anthony Molinaro and Robert de Graaf" },
+                    { title: "LLMOps: Managing Large Language Models in Production", author: "Abi Aryan" }
                   ].map((book) => (
                     <div key={book.title} className="group flex flex-col gap-1 transition-all">
                       <span className="text-sm font-medium text-black dark:text-white group-hover:underline underline-offset-4 decoration-gray-200 dark:decoration-gray-800 transition-all">
@@ -584,9 +585,9 @@ export default function Home() {
               </div> */}
 
               {/* Note */}
-              <p className="mt-6 text-xs italic text-gray-400 dark:text-gray-500">
+              {/* <p className="mt-6 text-xs italic text-gray-400 dark:text-gray-500">
                 *and many more, these are just one of my best reads
-              </p>
+              </p> */}
             </div>
 
             {/* Thing about me Section */}
